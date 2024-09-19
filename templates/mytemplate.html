@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-size: 1.4em;
+        }
+        td {
+            padding: 5px;
+        }
+        .green {
+            background-color: limegreen;
+        }
+        .red {
+            background-color: #f37289;
+        }
+        .yellow {
+            background-color: orange;
+        }
+        thead tr td {
+            background-color: coral;
+            border-bottom: black solid medium;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, Jinja</h1>
+    <table>
+        <thead>
+            <tr>
+              <td>Deployment</td>
+              <td>Version</td>
+              <td>Version match</td>
+            </tr>
+        </thead>
+        {% for i in mydata %}
+        {% set col1 = i[0] %}
+        {% set col2 = i[1] %}
+        {% set col3 = i[2] %}
+        {% set bgs = {'OK': 'green', 'NOK': 'red', 'HOK': 'yellow'} %}
+        <tr>
+            <td class="{{ bgs[col3] }}">{{ col1 }}</td>
+            <td class="{{ bgs[col3] }}">{{ col2 }}</td>
+            <td class="{{ bgs[col3] }}">{{ col3 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+        
+</body>
+</html>
