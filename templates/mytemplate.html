@@ -6,10 +6,15 @@
     <title>{{ title }}</title>
     <style>
         body {
+            font-family: sans-serif;
             font-size: 1.4em;
         }
         td {
+            border-radius: 3px;
             padding: 5px;
+        }
+        tbody td {
+            border: black solid medium;
         }
         .green {
             background-color: limegreen;
@@ -23,6 +28,7 @@
         thead tr td {
             background-color: coral;
             border-bottom: black solid medium;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -36,17 +42,17 @@
               <td>Version match</td>
             </tr>
         </thead>
-        {% for i in mydata %}
-        {% set col1 = i[0] %}
-        {% set col2 = i[1] %}
-        {% set col3 = i[2] %}
-        {% set bgs = {'OK': 'green', 'NOK': 'red', 'HOK': 'yellow'} %}
-        <tr>
-            <td class="{{ bgs[col3] }}">{{ col1 }}</td>
-            <td class="{{ bgs[col3] }}">{{ col2 }}</td>
-            <td class="{{ bgs[col3] }}">{{ col3 }}</td>
-        </tr>
-        {% endfor %}
+        <tbody>
+            {% for i in mydata %}
+            {% set col1, col2, col3 = i %}
+            {% set bgs = {'OK': 'green', 'NOK': 'red', 'HOK': 'yellow'} %}
+            <tr>
+                <td class="{{ bgs[col3] }}">{{ col1 }}</td>
+                <td class="{{ bgs[col3] }}">{{ col2 }}</td>
+                <td class="{{ bgs[col3] }}">{{ col3 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
         
 </body>
